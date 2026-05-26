@@ -1,0 +1,19 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+# Kaggle/local data and generated artifacts
+data/
+input/
+outputs/
+working/
+models/
+*.csv
+*.parquet
+*.pkl
+*.joblib
+*.mp4
+
+# Keep repository-authored documentation and notebooks.
+!docs/**/*.csv
