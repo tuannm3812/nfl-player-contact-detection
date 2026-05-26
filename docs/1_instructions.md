@@ -14,9 +14,11 @@ The target is binary:
 
 ## 2. Input Files
 
-Expected Kaggle path:
+Expected Kaggle paths. The notebooks resolve these automatically and also scan
+`/kaggle/input` for a directory containing the required CSV files:
 
 ```text
+/kaggle/input/1st-and-future-player-contact-detection
 /kaggle/input/nfl-player-contact-detection
 ```
 
@@ -29,6 +31,7 @@ Core files:
 - `train_baseline_helmets.csv`: training baseline helmet detections.
 - `test_baseline_helmets.csv`: test baseline helmet detections.
 - `train_video_metadata.csv`: timing metadata for training videos.
+- `test_video_metadata.csv`: timing metadata for test videos.
 
 Video files are provided under the competition `train/` and `test/` folders and
 are useful for visual inspection and later computer-vision features.

@@ -11,9 +11,12 @@ when a player is in contact with another player or with the ground by combining
 Next Gen Stats tracking data, baseline helmet detections, video metadata, and
 contact labels.
 
-Expected Kaggle input path:
+Expected Kaggle input path is resolved automatically from the competition mount.
+The notebooks check the current Kaggle slug first and keep the older starter
+notebook slug as a fallback:
 
 ```text
+/kaggle/input/1st-and-future-player-contact-detection
 /kaggle/input/nfl-player-contact-detection
 ```
 
