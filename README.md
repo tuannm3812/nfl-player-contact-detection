@@ -16,6 +16,8 @@ The notebooks check the current Kaggle slug first and keep the older starter
 notebook slug as a fallback:
 
 ```text
+/kaggle/input/competitions/nfl-player-contact-detection
+/kaggle/input/competitions/1st-and-future-player-contact-detection
 /kaggle/input/1st-and-future-player-contact-detection
 /kaggle/input/nfl-player-contact-detection
 ```

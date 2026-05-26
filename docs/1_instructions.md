@@ -18,6 +18,8 @@ Expected Kaggle paths. The notebooks resolve these automatically and also scan
 `/kaggle/input` for a directory containing the required CSV files:
 
 ```text
+/kaggle/input/competitions/nfl-player-contact-detection
+/kaggle/input/competitions/1st-and-future-player-contact-detection
 /kaggle/input/1st-and-future-player-contact-detection
 /kaggle/input/nfl-player-contact-detection
 ```
