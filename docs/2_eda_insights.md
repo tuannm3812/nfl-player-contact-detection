@@ -28,7 +28,37 @@ that the task is severely imbalanced and that accuracy is not a useful
 diagnostic. MCC, positive-rate control, recall, and slice analysis are more
 important.
 
-## 3. Fixed Error
+## 3. First Leaderboard Result
+
+Notebook 3 produced the first scored submission:
+
+| Submission | Public MCC | Private MCC | Local Validation MCC |
+| --- | ---: | ---: | ---: |
+| Tracking Feature, Version 3 | 0.63075 | 0.62593 | 0.65310 |
+
+The public/private gap is small (`0.00482`), which is a good sign: the model is
+not obviously overfit to the public split. The local validation score is about
+`0.022` to `0.027` higher than leaderboard scores, so the grouped validation is
+directionally useful but optimistic.
+
+Important slice diagnostics from local validation:
+
+| Contact Type | Local MCC | Actual Rate | Predicted Rate |
+| --- | ---: | ---: | ---: |
+| Ground | 0.41231 | 3.47% | 2.90% |
+| Player-player | 0.71656 | 1.02% | 1.36% |
+
+The model is strongest on player-player contact and materially weaker on
+ground contact. This confirms that the next performance work should prioritize
+ground-contact features and temporal smoothing rather than more static
+player-player distance features.
+
+Notebook 4 directly targets this gap with nearest-player density features and
+play/pair probability smoothing. It should replace Notebook 3 only if grouped
+validation beats `0.65310` or if the ground-contact slice improves without a
+meaningful player-player regression.
+
+## 4. Fixed Error
 
 The previous EDA notebook failed in the helmet/video metadata cell with:
 
@@ -43,7 +73,7 @@ filename column. Video filenames live in the baseline helmet files.
 Fix: the updated notebook now summarizes video metadata by `dataset` and
 `view`, and summarizes video filenames only from the helmet files.
 
-## 4. Notebook Flow
+## 5. Notebook Flow
 
 | Step | Purpose |
 | --- | --- |
@@ -59,7 +89,7 @@ Fix: the updated notebook now summarizes video metadata by `dataset` and
 | Field visualization | Plot a selected play and step on a football field. |
 | Distance baseline | Tune a distance threshold with play-grouped validation and MCC. |
 
-## 5. Modeling Implications
+## 6. Modeling Implications
 
 The EDA supports a two-branch modeling plan:
 
@@ -75,7 +105,7 @@ Notebook 3 implements the first version of this plan using tracking-only
 tabular features. It should be the next model to run when the distance baseline
 underperforms because it can score both player-player rows and ground rows.
 
-## 6. Validation Implications
+## 7. Validation Implications
 
 Rows from the same `game_play` are highly correlated. Contact labels are also
 temporally adjacent and can be noisy within roughly one 10 Hz timestep.
@@ -87,7 +117,7 @@ Default validation should therefore:
 - evaluate player-player and ground contact separately;
 - inspect prediction smoothing after, not before, out-of-fold validation.
 
-## 7. First Experiment
+## 8. First Experiment
 
 The first experiment remains a cleaned-up version of the starter notebook
 baseline:
@@ -101,7 +131,7 @@ baseline:
 Expected limitation: all ground rows are predicted as `0`, so recall on ground
 contact will remain poor until a dedicated ground-contact branch is added.
 
-## 8. Recommended Deep Dives
+## 9. Recommended Deep Dives
 
 The next EDA passes should focus on the failure modes most likely to improve
 MCC:
@@ -122,7 +152,7 @@ MCC:
    10 Hz tick, validate whether short run filling or probability smoothing
    improves grouped out-of-fold MCC.
 
-## 9. Improved Model Direction
+## 10. Improved Model Direction
 
 [`3_tracking_feature_model.ipynb`](../notebooks/3_tracking_feature_model.ipynb)
 adds an immediate model upgrade:
@@ -141,15 +171,16 @@ adds an immediate model upgrade:
 This should be stronger than the distance baseline because it does not force all
 ground-contact rows to zero.
 
-## 10. Notebook Review
+## 11. Notebook Review
 
 | Notebook | Current Role | Key Insight | Limitation |
 | --- | --- | --- | --- |
 | `1_eda_contact_tracking_video_context.ipynb` | Data understanding and failure-mode discovery. | The dataset is large, very imbalanced, temporally correlated, and contains distinct player-player and ground-contact problems. | It should be rerun in Kaggle after every major EDA addition because local execution cannot access competition data. |
 | `2_distance_baseline_first_experiment.ipynb` | Starter-style sanity baseline. | Player-player distance is a useful lower bound and validates the submission path. | Ground rows are forced to `0`, so MCC is capped by missing ground-contact recall. |
 | `3_tracking_feature_model.ipynb` | Current recommended model. | Tracking dynamics let the model learn both player-player and ground-contact patterns. | It is still tracking-only; helmet/video visibility and temporal smoothing remain the biggest likely next gains. |
+| `4_nearest_player_and_smoothing.ipynb` | Current challenger. | Local player density and temporal smoothing target the known ground-contact and label-noise weaknesses. | It needs a Kaggle run before submission; smoothing can over-spread false positives if the threshold is not retuned. |
 
-## 11. Path Decision
+## 12. Path Decision
 
 Earlier notebooks carried several `DATA_DIR` candidates while the Kaggle mount
 was still unclear. The correct path is now confirmed as:

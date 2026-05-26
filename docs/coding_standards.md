@@ -10,6 +10,8 @@ Keep the root small:
 
 - `notebooks/` for Kaggle notebooks.
 - `docs/` for standards, instructions, EDA notes, and notebook writeups.
+- `docs/3_model_evaluation_progress.md` for validation results,
+  leaderboard scores, champion/challenger decisions, and next experiments.
 - `README.md` for the high-level project overview and current best result.
 
 Do not commit raw Kaggle data, local model checkpoints, generated videos,
@@ -22,10 +24,11 @@ Use numbered, stable notebook names that match the project workflow:
 1. `1_eda_contact_tracking_video_context.ipynb`
 2. `2_distance_baseline_first_experiment.ipynb`
 3. `3_tracking_feature_model.ipynb`
+4. `4_nearest_player_and_smoothing.ipynb`
 
 Future notebooks should continue the sequence and describe the actual workflow,
-for example `4_video_features_and_fusion.ipynb` or
-`5_temporal_smoothing_and_ensemble.ipynb`.
+for example `5_video_features_and_fusion.ipynb` or
+`6_model_ensemble.ipynb`.
 
 ## 3. Code Style
 

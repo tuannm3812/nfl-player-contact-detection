@@ -192,6 +192,10 @@ The repository starts with two notebooks:
    [`3_tracking_feature_model.ipynb`](../notebooks/3_tracking_feature_model.ipynb)
    to learn player-player and player-ground contact patterns from tracking
    features and tune the final threshold for MCC.
+4. Run the nearest-player and smoothing challenger in
+   [`4_nearest_player_and_smoothing.ipynb`](../notebooks/4_nearest_player_and_smoothing.ipynb)
+   to test local-density features and temporal smoothing against the current
+   tracking-feature champion.
 
 Recommended next experiments:
 

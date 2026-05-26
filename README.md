@@ -35,11 +35,13 @@ Input files:
 |-- docs/
 |   |-- coding_standards.md
 |   |-- 1_instructions.md
-|   `-- 2_eda_insights.md
+|   |-- 2_eda_insights.md
+|   `-- 3_model_evaluation_progress.md
 `-- notebooks/
     |-- 1_eda_contact_tracking_video_context.ipynb
     |-- 2_distance_baseline_first_experiment.ipynb
-    `-- 3_tracking_feature_model.ipynb
+    |-- 3_tracking_feature_model.ipynb
+    `-- 4_nearest_player_and_smoothing.ipynb
 ```
 
 ## Notebook Workflow
@@ -49,6 +51,7 @@ Input files:
 | `1_eda_contact_tracking_video_context.ipynb` | Data quality, contact label balance, tracking context, helmet/video metadata checks, and distance-baseline validation. |
 | `2_distance_baseline_first_experiment.ipynb` | Reusable first experiment based on the starter notebook: tune a player-player distance threshold with MCC and write `submission.csv`. |
 | `3_tracking_feature_model.ipynb` | Offline-safe tracking-feature classifier for player-player and ground rows, grouped validation, MCC threshold tuning, and `submission.csv`. |
+| `4_nearest_player_and_smoothing.ipynb` | Challenger model with nearest-player density features and play/pair probability smoothing. |
 
 ## Current Modeling Direction
 
@@ -67,6 +70,16 @@ Notebook 3 is the current recommended modeling path. It trains a sampled
 tracking-feature classifier, adds prior-step movement and pair-distance-change
 features, validates on held-out plays with natural class balance, tunes a hard
 threshold for MCC, and writes `submission.csv`.
+
+First scored submission from Notebook 3:
+
+| Submission | Public MCC | Private MCC |
+| --- | ---: | ---: |
+| Tracking Feature, Version 3 | 0.63075 | 0.62593 |
+
+Notebook 4 is the current challenger. It should be submitted only if grouped
+validation improves over Notebook 3's `0.65310` local MCC or if it improves the
+ground-contact slice without materially damaging player-player MCC.
 
 The competition metric is Matthews Correlation Coefficient, so notebooks should
 report MCC for hard predictions instead of optimizing accuracy.
