@@ -196,6 +196,9 @@ The repository starts with two notebooks:
    [`4_nearest_player_and_smoothing.ipynb`](../notebooks/4_nearest_player_and_smoothing.ipynb)
    to test local-density features and temporal smoothing against the current
    tracking-feature champion.
+5. Run the type-specific threshold challenger in
+   [`5_type_specific_thresholds.ipynb`](../notebooks/5_type_specific_thresholds.ipynb)
+   to tune separate ground and player-player cutoffs after smoothing.
 
 Recommended next experiments:
 

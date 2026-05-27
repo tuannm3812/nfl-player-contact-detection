@@ -41,7 +41,8 @@ Input files:
     |-- 1_eda_contact_tracking_video_context.ipynb
     |-- 2_distance_baseline_first_experiment.ipynb
     |-- 3_tracking_feature_model.ipynb
-    `-- 4_nearest_player_and_smoothing.ipynb
+    |-- 4_nearest_player_and_smoothing.ipynb
+    `-- 5_type_specific_thresholds.ipynb
 ```
 
 ## Notebook Workflow
@@ -52,6 +53,7 @@ Input files:
 | `2_distance_baseline_first_experiment.ipynb` | Reusable first experiment based on the starter notebook: tune a player-player distance threshold with MCC and write `submission.csv`. |
 | `3_tracking_feature_model.ipynb` | Offline-safe tracking-feature classifier for player-player and ground rows, grouped validation, MCC threshold tuning, and `submission.csv`. |
 | `4_nearest_player_and_smoothing.ipynb` | Challenger model with nearest-player density features and play/pair probability smoothing. |
+| `5_type_specific_thresholds.ipynb` | Challenger that tunes separate ground and player-player thresholds after smoothing. |
 
 ## Current Modeling Direction
 
@@ -77,9 +79,15 @@ First scored submission from Notebook 3:
 | --- | ---: | ---: |
 | Tracking Feature, Version 3 | 0.63075 | 0.62593 |
 
-Notebook 4 is the current challenger. It should be submitted only if grouped
-validation improves over Notebook 3's `0.65310` local MCC or if it improves the
-ground-contact slice without materially damaging player-player MCC.
+Notebook 4 is the current scored champion:
+
+| Submission | Public MCC | Private MCC |
+| --- | ---: | ---: |
+| Nearest Player, Version 3 | 0.64497 | 0.64763 |
+
+Notebook 5 is the current challenger. It should be submitted only if
+type-specific thresholding improves grouped validation over Notebook 4's
+`0.67455` local MCC.
 
 The competition metric is Matthews Correlation Coefficient, so notebooks should
 report MCC for hard predictions instead of optimizing accuracy.

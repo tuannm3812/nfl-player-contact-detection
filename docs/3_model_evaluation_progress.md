@@ -10,22 +10,24 @@ Current expected notebook versions:
 | `2_distance_baseline_first_experiment.ipynb` | `DISTANCE_BASELINE_V9_CANONICAL_PATH` |
 | `3_tracking_feature_model.ipynb` | `TRACKING_FEATURE_V5_DYNAMICS` |
 | `4_nearest_player_and_smoothing.ipynb` | `NEAREST_SMOOTHING_V1_CHALLENGER` |
+| `5_type_specific_thresholds.ipynb` | `TYPE_THRESHOLDS_V1_CHALLENGER` |
 
 If Kaggle output shows an older version string, sync the notebook before using
 the output for decisions.
 
 | Rank | Notebook | Submission Name | Local Validation MCC | Public MCC | Private MCC | Decision |
 | ---: | --- | --- | ---: | ---: | ---: | --- |
-| 1 | `4_nearest_player_and_smoothing.ipynb` | Nearest player + smoothing | 0.67455 | Pending | Pending | Submit next |
-| 2 | `3_tracking_feature_model.ipynb` | Tracking Feature, Version 3 | 0.65310 | 0.63075 | 0.62593 | Current scored champion |
-| 3 | `2_distance_baseline_first_experiment.ipynb` | Distance baseline | 0.51863 | - | - | Superseded |
+| 1 | `4_nearest_player_and_smoothing.ipynb` | Nearest Player, Version 3 | 0.67455 | 0.64497 | 0.64763 | Current scored champion |
+| 2 | `5_type_specific_thresholds.ipynb` | Type-specific thresholds | Pending | Pending | Pending | Run next |
+| 3 | `3_tracking_feature_model.ipynb` | Tracking Feature, Version 3 | 0.65310 | 0.63075 | 0.62593 | Superseded |
+| 4 | `2_distance_baseline_first_experiment.ipynb` | Distance baseline | 0.51863 | - | - | Superseded |
 
 Notebook 3 is the first scored model. Its public/private gap is small
 (`0.00482`), which suggests the model generalizes reasonably across leaderboard
 splits. Local validation is optimistic by about `0.022` to `0.027` MCC.
 
-Notebook 4 is the next submission candidate. It improves local validation by
-`+0.02145` MCC over Notebook 3 and improves both contact-type slices.
+Notebook 4 is now the scored champion. It improved over Notebook 3 by
+`+0.01422` public MCC and `+0.02170` private MCC.
 
 ## 2. Champion Diagnostics
 
@@ -48,9 +50,9 @@ Interpretation:
 
 | Notebook | Status | Goal | Submit If |
 | --- | --- | --- | --- |
-| `4_nearest_player_and_smoothing.ipynb` | Passed local validation | Add nearest-player density and contact-pair smoothing | Submit and record public/private score |
+| `5_type_specific_thresholds.ipynb` | Ready to run | Tune separate ground and player-player thresholds after smoothing | Submit only if local MCC beats `0.67455` |
 
-Notebook 4 targets two likely weaknesses:
+Notebook 4 targeted two likely weaknesses:
 
 - local density: contact risk depends on nearest teammate/opponent context;
 - label noise: contact labels may be offset by roughly one 10 Hz timestep, so
@@ -76,6 +78,9 @@ Notebook 4 local validation by contact type:
 | Ground | 0.50623 | 3.47% | 3.87% |
 | Player-player | 0.72226 | 1.02% | 1.37% |
 
+Notebook 5 tests whether separate contact-type thresholds can improve on this
+without changing the model itself.
+
 ## 4. Evaluation Rules
 
 Use this decision order for new experiments:
@@ -91,7 +96,7 @@ Use this decision order for new experiments:
 
 | Priority | Experiment | Reason |
 | ---: | --- | --- |
-| 1 | Submit Notebook 4 | Local validation improves meaningfully over the scored champion. |
+| 1 | Run Notebook 5 | Tests whether type-specific thresholds improve MCC over Notebook 4. |
 | 2 | Dedicated ground-contact model | Ground slice remains weaker than player-player contact. |
 | 3 | Helmet visibility features | Baseline helmet boxes can provide posture and visibility proxies. |
 | 4 | Short-window features around `t-2` to `t+2` | Contact labels are noisy and contact evolves over adjacent steps. |

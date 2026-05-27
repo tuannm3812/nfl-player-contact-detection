@@ -25,10 +25,11 @@ Use numbered, stable notebook names that match the project workflow:
 2. `2_distance_baseline_first_experiment.ipynb`
 3. `3_tracking_feature_model.ipynb`
 4. `4_nearest_player_and_smoothing.ipynb`
+5. `5_type_specific_thresholds.ipynb`
 
 Future notebooks should continue the sequence and describe the actual workflow,
-for example `5_video_features_and_fusion.ipynb` or
-`6_model_ensemble.ipynb`.
+for example `6_video_features_and_fusion.ipynb` or
+`7_model_ensemble.ipynb`.
 
 ## 3. Code Style
 
@@ -61,8 +62,18 @@ Prefer readable, self-contained notebook code over imports from local project
 modules. Kaggle should be able to run each notebook with only the competition
 dataset available at the fixed input path.
 
-Committed notebooks should be lightweight and have outputs cleared. Kaggle is
-the trusted execution record.
+Notebook outputs are useful when they document a real Kaggle run:
+
+- If notebook code has not changed, keep existing outputs so metrics,
+  diagnostics, and tables remain reviewable in GitHub and the IDE.
+- If notebook code changes, clear stale outputs before committing unless the
+  notebook was rerun after the code change.
+- New notebooks should be committed without outputs until they have a trusted
+  Kaggle run.
+- When reviewing notebook diffs, separate source changes from output-only
+  refreshes.
+
+Kaggle remains the trusted execution environment for final metrics.
 
 Before running a notebook on Kaggle:
 
