@@ -113,6 +113,9 @@ Project-safe feature themes:
   Kaggle-compatible offline inputs;
 - temporal smoothing within a play without using future labels.
 
+Research notebooks may install packages or download weights when internet is
+enabled, but final submission notebooks must use only offline Kaggle inputs.
+
 Avoid target leakage:
 
 - Do not use contact labels in feature construction.

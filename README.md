@@ -120,7 +120,7 @@ Required files:
 | `5_type_specific_thresholds.ipynb` | Tunes separate ground and player-player thresholds after smoothing. |
 | `6_type_specific_models.ipynb` | Trains separate ground and player-player models before smoothing and threshold tuning. |
 | `7_blended_type_models.ipynb` | Blends unified and type-specific probabilities before smoothing and threshold tuning. |
-| `8_yolo_video_feature_probe.ipynb` | Investigates frame sync, helmet overlays, optional YOLO detections, and cheap video-derived features. |
+| `8_yolo_video_feature_probe.ipynb` | Investigates frame sync, helmet overlays, research-mode YOLO install/download, and cheap video-derived features. |
 
 ## Modeling Direction
 
@@ -137,4 +137,6 @@ tracking-feature pipeline:
 7. Evaluate ground and player-player slices separately before submitting.
 
 Next priority: submit Notebook 7 as the leaderboard challenger, then run
-Notebook 8 to decide whether helmet/video features deserve a production model.
+Notebook 8 with internet enabled to decide whether helmet/video features and
+YOLO detections deserve a production model. Any final YOLO submission path
+needs offline Kaggle inputs for packages and weights.

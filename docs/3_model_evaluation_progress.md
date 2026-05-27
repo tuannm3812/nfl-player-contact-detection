@@ -13,7 +13,7 @@ Current expected notebook versions:
 | `5_type_specific_thresholds.ipynb` | `TYPE_THRESHOLDS_V2_SAFE_MCC` |
 | `6_type_specific_models.ipynb` | `TYPE_MODELS_V1_CHALLENGER` |
 | `7_blended_type_models.ipynb` | `BLENDED_TYPE_MODELS_V1_CHALLENGER` |
-| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V1` |
+| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V2_DOWNLOAD` |
 
 If Kaggle output shows an older version string, sync the notebook before using
 the output for decisions.
@@ -56,7 +56,7 @@ Interpretation:
 | Notebook | Status | Goal | Submit If |
 | --- | --- | --- | --- |
 | `7_blended_type_models.ipynb` | Local validation improved | Blend the stable unified model with type-specific models before smoothing and threshold tuning | Submit as the next leaderboard challenger; keep Notebook 5 selected until public/private confirm it |
-| `8_yolo_video_feature_probe.ipynb` | EDA/video probe | Inspect frame sync, helmet overlays, optional YOLO detections, and cheap helmet geometry features | Do not submit directly; use findings to decide whether Notebook 9 should add video features |
+| `8_yolo_video_feature_probe.ipynb` | EDA/video probe | Inspect frame sync, helmet overlays, optional YOLO install/download research mode, and cheap helmet geometry features | Do not submit directly; use findings to decide whether Notebook 9 should add video features |
 
 Notebook 4 targeted two likely weaknesses:
 

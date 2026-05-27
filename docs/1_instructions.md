@@ -210,14 +210,16 @@ The repository starts with two notebooks:
 8. Run the YOLO/video feature probe in
    [`8_yolo_video_feature_probe.ipynb`](../notebooks/8_yolo_video_feature_probe.ipynb)
    to inspect synchronized frames, helmet overlays, optional YOLO detections,
-   and cheap helmet-derived feature candidates.
+   optional research-mode YOLO install/download, and cheap helmet-derived
+   feature candidates.
 
 Recommended next experiments:
 
 1. Submit Notebook 7 after confirming the printed notebook version and compare
    public/private MCC against Notebook 5.
 2. Use Notebook 8 to validate frame synchronization, target-player visibility,
-   and whether YOLO adds information beyond the provided helmet boxes.
+   and whether research-mode YOLO adds information beyond the provided helmet
+   boxes.
 3. Add helmet visibility, box geometry, and pixel-distance features before
    attempting a heavy CNN.
 4. Build short-window tracking and helmet interpolation features around
