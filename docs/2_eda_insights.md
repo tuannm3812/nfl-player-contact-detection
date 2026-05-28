@@ -13,7 +13,7 @@ The current EDA run is:
 | Notebook | Version |
 | --- | --- |
 | `1_eda_contact_tracking_video_context.ipynb` | `EDA_V10_VIDEO_DEMO` |
-| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V3_CPU` |
+| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V4_NETCHECK` |
 
 ## 2. Dataset Scale
 
@@ -343,12 +343,13 @@ Skipping YOLO: ultralytics is not installed in this notebook image.
 ```
 
 This is not a failure. The updated notebook version,
-`YOLO_VIDEO_PROBE_V3_CPU`, now supports internet-enabled research mode:
+`YOLO_VIDEO_PROBE_V4_NETCHECK`, now supports internet-enabled research mode:
 
 1. install `ultralytics` if missing;
 2. load attached offline YOLO weights if present;
 3. download `yolov8n.pt` when internet is enabled;
-4. run YOLO on CPU for the sample contact frame and save an annotated
+4. check PyPI connectivity before attempting package install;
+5. run YOLO on CPU for the sample contact frame and save an annotated
    detection image.
 
 For final code-competition submission, internet must be disabled. Any YOLO

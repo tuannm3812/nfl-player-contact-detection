@@ -13,7 +13,7 @@ Current expected notebook versions:
 | `5_type_specific_thresholds.ipynb` | `TYPE_THRESHOLDS_V2_SAFE_MCC` |
 | `6_type_specific_models.ipynb` | `TYPE_MODELS_V1_CHALLENGER` |
 | `7_blended_type_models.ipynb` | `BLENDED_TYPE_MODELS_V1_CHALLENGER` |
-| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V3_CPU` |
+| `8_yolo_video_feature_probe.ipynb` | `YOLO_VIDEO_PROBE_V4_NETCHECK` |
 
 If Kaggle output shows an older version string, sync the notebook before using
 the output for decisions.
